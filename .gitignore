@@ -2,3 +2,8 @@
 .claude/
 launch/
 assets/252156C2-44E2-480A-A2A8-2281DA902850.PNG
+
+# Never commit the shop password or local queue state
+worker/.dev.vars
+worker/.wrangler/
+worker/node_modules/

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Check-In — Cuts By The Bay</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/checkin.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-brand">
+    <img src="assets/favicon.png" alt="" width="128" height="128">
+    <span>Cuts By The Bay <em>— Front Desk</em></span>
+  </div>
+  <button type="button" class="link-btn" id="sign-out" hidden>Sign out</button>
+</header>
+
+<!-- ============ LOGIN ============ -->
+<main class="gate" id="gate" hidden>
+  <form class="card gate-card" id="login-form">
+    <h1>Front desk</h1>
+    <p class="muted">Enter the shop password to check customers in.</p>
+    <label class="field">
+      <span>Shop password</span>
+      <input type="password" id="password" autocomplete="current-password" required>
+    </label>
+    <p class="error" id="login-error" hidden></p>
+    <button class="btn btn-primary" type="submit" id="login-submit">Sign in</button>
+  </form>
+</main>
+
+<!-- ============ THE DESK ============ -->
+<main class="desk" id="desk" hidden>
+
+  <section class="card summary">
+    <div class="summary-main">
+      <span class="k">Wait we're quoting</span>
+      <strong class="v" id="sum-wait">—</strong>
+    </div>
+    <div class="summary-side">
+      <div><span class="k">In line</span><strong id="sum-waiting">0</strong></div>
+      <div><span class="k">On the floor</span><strong id="sum-barbers">0</strong></div>
+    </div>
+    <p class="summary-note" id="sum-note"></p>
+  </section>
+
+  <section class="card">
+    <h2>Barbers</h2>
+    <div class="barbers" id="barbers"></div>
+    <form class="inline-form" id="barber-form">
+      <input type="text" id="barber-name" placeholder="Add a barber" maxlength="40">
+      <button class="btn btn-ghost" type="submit">Add</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Check someone in</h2>
+    <form class="inline-form" id="add-form">
+      <input type="text" id="customer-name" placeholder="First name" maxlength="40" required autocomplete="off">
+      <input type="text" id="customer-note" placeholder="Cut, beard… (optional)" maxlength="60" autocomplete="off">
+      <button class="btn btn-primary" type="submit">Add to line</button>
+    </form>
+    <p class="error" id="add-error" hidden></p>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <h2>The line</h2>
+      <button type="button" class="link-btn" id="clear-line">Clear the line</button>
+    </div>
+    <ol class="queue" id="queue"></ol>
+    <p class="muted empty" id="queue-empty" hidden>Nobody waiting. Quiet morning.</p>
+  </section>
+
+  <section class="card">
+    <h2>Settings</h2>
+    <div class="settings">
+      <label class="field inline">
+        <span>Average cut</span>
+        <span class="with-suffix">
+          <input type="number" id="avg-cut" min="5" max="180" step="5">
+          <em>min</em>
+        </span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="shop-open">
+        <span>Shop is open — show the wait on the main site</span>
+      </label>
+    </div>
+    <p class="muted">
+      With the shop closed, or nobody on duty, the main site hides the wait badge entirely.
+    </p>
+  </section>
+
+  <p class="foot" id="foot"></p>
+</main>
+
+<script src="assets/config.js"></script>
+<script src="assets/checkin.js"></script>
+</body>
+</html>

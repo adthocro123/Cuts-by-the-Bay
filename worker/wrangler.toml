@@ -1,0 +1,18 @@
+name = "cuts-by-the-bay-queue"
+main = "src/index.js"
+compatibility_date = "2025-11-01"
+
+# The public site is allowed to call this API. Add more origins comma-separated
+# if the shop ever moves to a custom domain.
+[vars]
+ALLOWED_ORIGINS = "https://adthocro123.github.io,http://localhost:8787,http://127.0.0.1:8787,http://localhost:8734"
+
+# One Durable Object holds the whole queue, so every device sees the same
+# numbers the instant a barber taps something.
+[[durable_objects.bindings]]
+name = "QUEUE"
+class_name = "QueueRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["QueueRoom"]
