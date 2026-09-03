@@ -7,10 +7,13 @@ Holds the walk-in line and works out the wait time. The public site reads
 
 ```sh
 cd worker
-npx wrangler login          # opens the browser once
+npx wrangler login                        # opens the browser once
+npx wrangler deploy                       # creates the worker, prints its URL
 npx wrangler secret put STAFF_PASSWORD    # type the shop password, press enter
-npx wrangler deploy
 ```
+
+Deploy before setting the secret — until the password is set the API just
+answers with a "missing STAFF_PASSWORD" message, which is expected.
 
 `deploy` prints the live URL. Paste it into `assets/config.js` (replacing
 `YOUR-SUBDOMAIN`), then commit and push so the site starts using it.
